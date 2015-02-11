@@ -1,8 +1,7 @@
 'use strict'
 
-angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize'])
+angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked'])
 .config ($stateProvider, $urlRouterProvider) ->
-  console.log 'aaa'
   $urlRouterProvider.otherwise '/main'
   $stateProvider.state 'login',
     url: '/login'
@@ -13,3 +12,15 @@ angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize']
     url: '/main'
     templateUrl: 'views/main.html'
     controller: 'MainCtrl'
+  .state 'create_wiki',
+    url: '/create_wiki'
+    templateUrl: 'views/create_wiki.html'
+    controller: 'CreateWikiCtrl'
+  .state 'edit_wiki',
+    url: '/edit_wiki'
+    templateUrl: 'views/edit_wiki.html'
+    controller: 'EditWikiCtrl'
+
+
+#module化したライブラリ
+angular.module('marked', []).factory 'marked', ()=> @.marked

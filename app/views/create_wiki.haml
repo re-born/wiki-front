@@ -1,0 +1,6 @@
+.editor
+  %h2 Markdown
+  %textarea#editor-area{'ng-model'=>'markdown', 'ng-change'=>'markdown_change()'}
+.preview
+  %h2 Preview
+  %p#preview-area{'ng-bind-html'=>"pre"}
