@@ -1,5 +1,14 @@
 'use strict'
+test_url = 'http://127.0.0.1:3000'
 url = ''
+
+angular.module('RSLWikiApp').factory "Users", ($location, $resource) ->
+  $resource "#{test_url}/users",
+      null
+    ,
+      create:
+        method: 'POST'
+        isArray: false
 
 angular.module('RSLWikiApp').factory "Sessions", ($location, $resource) ->
   $resource "#{url}/session",
@@ -24,7 +33,7 @@ angular.module('RSLWikiApp').factory "Sessions", ($location, $resource) ->
           auth_token: '@auth_token'
         isArray: false
 
-angular.module('RSLwikiApp').factory "UserManageAPI", ($location, $resource) ->
+angular.module('RSLWikiApp').factory "UserManageAPI", ($location, $resource) ->
   $resource "#{url}/wiki",
       null
     ,

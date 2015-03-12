@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope,marked) ->
+angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, marked) ->
   $scope.markdown = ''
   $scope.pre = ''
   $scope.markdown_change = ()->
