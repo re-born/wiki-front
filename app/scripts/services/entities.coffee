@@ -1,5 +1,5 @@
 'use strict'
-test_url = 'http://127.0.0.1:3000'
+test_url = 'http://127.0.0.1:3000/api'
 url = ''
 
 angular.module('RSLWikiApp').factory "Users", ($location, $resource) ->
@@ -34,7 +34,7 @@ angular.module('RSLWikiApp').factory "Sessions", ($location, $resource) ->
         isArray: false
 
 angular.module('RSLWikiApp').factory "UserManageAPI", ($location, $resource) ->
-  $resource "#{url}/wiki",
+  $resource "#{test_url}/documents",
       null
     ,
       get_list:
