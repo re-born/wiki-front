@@ -33,7 +33,7 @@ angular.module('RSLWikiApp').factory "Sessions", ($location, $resource) ->
           auth_token: '@auth_token'
         isArray: false
 
-angular.module('RSLWikiApp').factory "UserManageAPI", ($location, $resource) ->
+angular.module('RSLWikiApp').factory "WikiAPI", ($location, $resource) ->
   $resource "#{test_url}/documents",
       null
     ,

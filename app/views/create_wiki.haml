@@ -1,7 +1,11 @@
+.title
+  %h2 Title
+  %input{'ng-model'=>'title'}
 .editor
   %h2 Markdown
   %textarea#editor-area{'ng-model'=>'markdown', 'ng-change'=>'markdown_change()'}
 .preview
   %h2 Preview
   %p#preview-area{'ng-bind-html'=>"pre"}
+%tags-input{'ng-model'=>'tags'}
 %button{'ng-click'=>'postDoc()'} POST

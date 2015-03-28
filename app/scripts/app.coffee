@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked'])
+angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked','ngTagsInput','underscore'])
 .config ($stateProvider, $urlRouterProvider) ->
   $urlRouterProvider.otherwise '/main'
   $stateProvider.state 'login',
@@ -24,3 +24,4 @@ angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize',
 
 #module化したライブラリ
 angular.module('marked', []).factory 'marked', ()=> @.marked
+angular.module('underscore', []).factory '_', ()=> @._
