@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, marked, UserManageAPI, _) ->
+angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, marked, WikiAPI, _) ->
   $scope.markdown = ''
   $scope.pre = ''
   $scope.tags = [
@@ -13,7 +13,7 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, marked, UserM
       content: $scope.markdown
       title: $scope.title
       tags: _.pluck($scope.tags, 'text')
-    UserManageAPI.create doc, (result) ->
+    WikiAPI.create doc, (result) ->
       console.log result
     , (e) ->
       console.log e
