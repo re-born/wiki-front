@@ -3,6 +3,8 @@
 angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, marked, UserManageAPI, _) ->
   $scope.markdown = ''
   $scope.pre = ''
+  $scope.tags = [
+  ]
   $scope.markdown_change = () ->
     $scope.pre = marked($scope.markdown)
   $scope.postDoc = () ->
