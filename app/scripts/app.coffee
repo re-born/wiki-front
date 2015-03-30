@@ -1,8 +1,8 @@
 'use strict'
 
-angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked','ngTagsInput','underscore'])
+angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked','ngTagsInput','underscore', 'angularLocalStorage'])
 .config ($stateProvider, $urlRouterProvider) ->
-  $urlRouterProvider.otherwise '/main'
+  $urlRouterProvider.otherwise '/login'
   $stateProvider.state 'login',
     url: '/login'
     auth: false
@@ -20,6 +20,14 @@ angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize',
     url: '/edit_wiki'
     templateUrl: 'views/edit_wiki.html'
     controller: 'EditWikiCtrl'
+
+angular.module('RSLWikiApp').config ["$httpProvider", ($httpProvider) ->
+  $httpProvider.defaults.headers.common['Accept'] = "application/json"
+  $httpProvider.interceptors.push (storage) ->
+    request: (config)->
+      config.headers['Rsl-Http-Access-Token'] = storage.get('rsl.access_token')
+      config
+]
 
 
 #module化したライブラリ

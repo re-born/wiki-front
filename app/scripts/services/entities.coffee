@@ -10,8 +10,8 @@ angular.module('RSLWikiApp').factory "Users", ($location, $resource) ->
         method: 'POST'
         isArray: false
 
-angular.module('RSLWikiApp').factory "Sessions", ($location, $resource) ->
-  $resource "#{url}/session",
+angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource) ->
+  $resource "#{test_url}/sessions",
       null
     ,
       login:
@@ -22,9 +22,6 @@ angular.module('RSLWikiApp').factory "Sessions", ($location, $resource) ->
         url: "/session/check"
         params:
           auth_token: '@auth_token'
-        isArray: false
-      get_current_user:
-        method: 'GET'
         isArray: false
       logout:
         method: 'DELETE'
