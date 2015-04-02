@@ -1,15 +1,15 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, marked, WikiAPI, _) ->
+angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marked, WikiAPI, _, storage) ->
   $scope.markdown = ''
   $scope.pre = ''
-  $scope.tags = [
-  ]
+  $scope.title = ''
+  $scope.tags = []
   $scope.markdown_change = () ->
     $scope.pre = marked($scope.markdown)
   $scope.postDoc = () ->
     doc =
-      user_id: 1
+      user_id: storage.get('rsl.current_user').id
       content: $scope.markdown
       title: $scope.title
       tags: _.pluck($scope.tags, 'text')

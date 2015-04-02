@@ -46,6 +46,6 @@ angular.module('RSLWikiApp').factory "WikiAPI", ($location, $resource) ->
           id: '@id'
         isArray: false
       update:
-        method: 'PUT'
-        url: "/wiki/:id"
+        method: 'PATCH'
+        url: "/:id"
         isArray: false
