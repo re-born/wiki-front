@@ -22,11 +22,11 @@ angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize',
     controller: 'WikiCtrl'
   .state 'create_wiki',
     url: '/create_wiki'
-    templateUrl: 'views/create_wiki.html'
+    templateUrl: 'views/wiki_form.html'
     controller: 'CreateWikiCtrl'
   .state 'edit_wiki',
     url: '/edit_wiki/:wiki_id'
-    templateUrl: 'views/edit_wiki.html'
+    templateUrl: 'views/wiki_form.html'
     controller: 'EditWikiCtrl'
 
 angular.module('RSLWikiApp').config ["$httpProvider", ($httpProvider) ->

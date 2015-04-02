@@ -1,9 +1,8 @@
 'use strict'
-test_url = 'http://127.0.0.1:3000/api'
-url = ''
+url = 'http://127.0.0.1:3000/api'
 
 angular.module('RSLWikiApp').factory "Users", ($location, $resource) ->
-  $resource "#{test_url}/users",
+  $resource "#{url}/users",
       null
     ,
       create:
@@ -11,7 +10,7 @@ angular.module('RSLWikiApp').factory "Users", ($location, $resource) ->
         isArray: false
 
 angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource) ->
-  $resource "#{test_url}/sessions",
+  $resource "#{url}/sessions",
       null
     ,
       login:
@@ -25,18 +24,18 @@ angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource) ->
         isArray: false
       logout:
         method: 'DELETE'
-        url: "/session"
+        url: "#{url}/session"
         params:
           auth_token: '@auth_token'
         isArray: false
 
 angular.module('RSLWikiApp').factory "WikiAPI", ($location, $resource) ->
-  $resource "#{test_url}/documents/:id",
+  $resource "#{url}/documents/:id",
       id: "@id"
     ,
       get:
         method: 'GET'
-        url: "#{test_url}/documents/:id"
+        url: "#{url}/documents/:id"
         isArray: false
       get_list:
         method: 'GET'
@@ -46,10 +45,9 @@ angular.module('RSLWikiApp').factory "WikiAPI", ($location, $resource) ->
         isArray: false
       delete:
         method: 'DELETE'
-        params:
-          id: '@id'
+        url: "#{url}/documents/:id"
         isArray: false
       update:
         method: 'PATCH'
-        url: "/:id"
+        url: "#{url}/documents/:id"
         isArray: false
