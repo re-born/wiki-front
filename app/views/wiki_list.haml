@@ -1,3 +1,6 @@
 .wiki-list{"ng-repeat"=>"wiki in wikis"}
   %li
     %a{"ui-sref"=>"wiki({wiki_id:wiki.id})"} {{wiki.title}}
+    %span {{wiki.user.name}}
+    %span{"ng-repeat"=>"tag in wiki.tags"} {{tag.name}}
+    %span {{wiki.created_at}}

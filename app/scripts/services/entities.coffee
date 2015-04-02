@@ -31,9 +31,13 @@ angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource) ->
         isArray: false
 
 angular.module('RSLWikiApp').factory "WikiAPI", ($location, $resource) ->
-  $resource "#{test_url}/documents",
-      null
+  $resource "#{test_url}/documents/:id",
+      id: "@id"
     ,
+      get:
+        method: 'GET'
+        url: "#{test_url}/documents/:id"
+        isArray: false
       get_list:
         method: 'GET'
         isArray: true

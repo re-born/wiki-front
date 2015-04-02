@@ -14,6 +14,6 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
       title: $scope.title
       tags: _.pluck($scope.tags, 'text')
     WikiAPI.create doc, (result) ->
-      console.log result
+      $state.go 'wiki_list'
     , (e) ->
       console.log e

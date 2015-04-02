@@ -17,7 +17,7 @@ angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize',
     templateUrl: 'views/wiki_list.html'
     controller: 'WikiListCtrl'
   .state 'wiki',
-    url: 'wiki/:wiki_id'
+    url: '/wiki/:wiki_id'
     templateUrl: 'views/wiki.html'
     controller: 'WikiCtrl'
   .state 'create_wiki',
