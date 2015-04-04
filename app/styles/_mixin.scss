@@ -1,0 +1,7 @@
+$prefixes: ("-webkit-", "-moz-", "-ms-", "");
+
+@mixin box_shadow($value...) {
+  @each $prefix in $prefixes {
+    #{$prefix}box-shadow: $value;
+  }
+}

@@ -1,0 +1,24 @@
+.header {
+  width: 100%;
+  height: $header_height;
+  background: $header_bg;
+  color: $header_font_color;
+  @include box_shadow(0 0 4px 2px #666);
+  .title {
+    position: absolute;
+    width: 200px;
+    margin-left: 32px;
+    line-height: $header_height;
+    font-weight: 300;
+  }
+  ul{
+    float: right;
+    margin-right: 8px;
+    li {
+      margin: 0 4px;
+      float: right;
+      line-height: $header_height;
+      list-style: none;
+    }
+  }
+}

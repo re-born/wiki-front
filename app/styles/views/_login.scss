@@ -1,0 +1,21 @@
+#login-form {
+  width: 432px;
+  margin: 96px auto;
+  background: #fff;
+  @include box_shadow(1px 1px 1px 1px #bbb);
+  input {
+    width: 400px;
+    margin: 16px;
+    font-size: 16px;
+    border-bottom: solid 1px #E0E0E0;
+  }
+  .sign-up-btn {
+    background: #5C6BC0;
+    width: 96px;
+    height: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    float: right;
+    margin: 0 16px 16px;
+  }
+}

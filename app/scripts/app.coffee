@@ -3,31 +3,54 @@
 angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked','ngTagsInput','underscore', 'angularLocalStorage'])
 .config ($stateProvider, $urlRouterProvider) ->
   $urlRouterProvider.otherwise '/login'
+
+  wiki_header =
+    header:
+      templateUrl: 'views/header.html'
+      controller: 'HeaderCtrl'
+
   $stateProvider.state 'login',
     url: '/login'
     auth: false
-    templateUrl: 'views/login.html'
-    controller: 'LoginCtrl'
+    views:
+      content:
+        templateUrl: 'views/login.html'
+        controller: 'LoginCtrl'
   .state 'main',
     url: '/main'
-    templateUrl: 'views/main.html'
-    controller: 'MainCtrl'
+    views:
+      header: wiki_header.header
+      content:
+        templateUrl: 'views/main.html'
+        controller: 'MainCtrl'
   .state 'wiki_list',
     url: '/wiki_list'
-    templateUrl: 'views/wiki_list.html'
-    controller: 'WikiListCtrl'
+    views:
+      header: wiki_header.header
+      content:
+        templateUrl: 'views/wiki_list.html'
+        controller: 'WikiListCtrl'
   .state 'wiki',
     url: '/wiki/:wiki_id'
-    templateUrl: 'views/wiki.html'
-    controller: 'WikiCtrl'
+    views:
+      header: wiki_header.header
+      content:
+        templateUrl: 'views/wiki.html'
+        controller: 'WikiCtrl'
   .state 'create_wiki',
     url: '/create_wiki'
-    templateUrl: 'views/wiki_form.html'
-    controller: 'CreateWikiCtrl'
+    views:
+      header: wiki_header.header
+      content:
+        templateUrl: 'views/wiki_form.html'
+        controller: 'CreateWikiCtrl'
   .state 'edit_wiki',
     url: '/edit_wiki/:wiki_id'
-    templateUrl: 'views/wiki_form.html'
-    controller: 'EditWikiCtrl'
+    views:
+      header: wiki_header.header
+      content:
+        templateUrl: 'views/wiki_form.html'
+        controller: 'EditWikiCtrl'
 
 angular.module('RSLWikiApp').config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common['Accept'] = "application/json"
@@ -38,7 +61,7 @@ angular.module('RSLWikiApp').config ["$httpProvider", ($httpProvider) ->
     responseError: (rejection)->
       if rejection.status == 401
         $location.path '/login'
-        # storage.clearAll()
+        storage.clearAll()
       $q.reject(rejection)
 ]
 

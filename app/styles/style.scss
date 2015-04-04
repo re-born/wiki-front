@@ -1,2 +1,9 @@
+@import "settings";
+@import "mixin";
+@import "base/base";
+@import "layout/header";
+@import "parts/button";
 
-@import "main";
+@import "views/login";
+@import "views/wiki_list";
+

@@ -25,8 +25,6 @@ angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource) ->
       logout:
         method: 'DELETE'
         url: "#{url}/session"
-        params:
-          auth_token: '@auth_token'
         isArray: false
 
 angular.module('RSLWikiApp').factory "WikiAPI", ($location, $resource) ->

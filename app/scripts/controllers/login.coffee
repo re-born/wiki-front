@@ -1,6 +1,7 @@
 'use strict'
 
 angular.module('RSLWikiApp').controller 'LoginCtrl', ($scope, $state, SessionAPI, storage) ->
+  return $state.go 'wiki_list' if storage.get('rsl.current_user')
   $scope.login_params =
     login_id: ''
     password: ''
