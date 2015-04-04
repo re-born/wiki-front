@@ -1,7 +1,7 @@
 'use strict'
 url = 'http://127.0.0.1:3000/api'
 
-angular.module('RSLWikiApp').factory "Users", ($location, $resource) ->
+angular.module('RSLWikiApp').factory "UserAPI", ($location, $resource) ->
   $resource "#{url}/users",
       null
     ,

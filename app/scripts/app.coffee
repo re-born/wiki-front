@@ -16,6 +16,13 @@ angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize',
       content:
         templateUrl: 'views/login.html'
         controller: 'LoginCtrl'
+  $stateProvider.state 'sign_up',
+    url: '/sign_up'
+    auth: false
+    views:
+      content:
+        templateUrl: 'views/sign_up.html'
+        controller: 'SignUpCtrl'
   .state 'main',
     url: '/main'
     views:

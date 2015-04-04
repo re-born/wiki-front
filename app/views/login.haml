@@ -1,9 +1,9 @@
-#login-form
+#form
+  %h2 Login
   %input{"ng-model"=>"login_params.login_id","placeholder"=>"Login ID"}
   %input{"ng-model"=>"login_params.password","placeholder"=>"Password", "type"=>"password"}
-  .button.login-btn{"ng-click"=>"login()"}
+  .button{"ng-click"=>"login()"}
     .font login
-    %paper-ripple
 
   .button.sign-up-btn{"ui-sref"=>"sign_up"} Sign Up
   .clear-both
