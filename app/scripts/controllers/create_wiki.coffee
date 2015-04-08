@@ -5,8 +5,15 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
   $scope.pre = ''
   $scope.title = ''
   $scope.tags = []
-  $scope.markdown_change = () ->
-    $scope.pre = marked($scope.markdown)
+  $scope.editorOptions = 
+    lineWrapping : true
+    lineNumbers: true
+    # matchBrackets: true
+    # autofocus: true
+    mode: 'markdown'
+
+  $scope.markdown_change = (el) ->
+    $scope.pre = marked(el.markdown)
   $scope.postDoc = () ->
     doc =
       user_id: storage.get('rsl.current_user').id

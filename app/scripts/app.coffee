@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked','ngTagsInput','underscore', 'angularLocalStorage'])
+angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked','ngTagsInput','underscore', 'angularLocalStorage', 'ui.codemirror', 'ngMaterial'])
 .config ($stateProvider, $urlRouterProvider) ->
   $urlRouterProvider.otherwise '/login'
 
