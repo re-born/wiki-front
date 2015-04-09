@@ -16,6 +16,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
 
   grunt.loadNpmTasks('grunt-haml');
+  grunt.loadNpmTasks('grunt-replace');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -31,7 +32,7 @@ module.exports = function (grunt) {
     watch: {
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.{coffee,litcoffee,coffee.md}'],
-        tasks: ['newer:coffee:dist']
+        tasks: ['newer:coffee:dist',"replace:local"]
       },
       coffeeTest: {
         files: ['test/spec/{,*/}*.{coffee,litcoffee,coffee.md}'],
@@ -389,6 +390,43 @@ module.exports = function (grunt) {
         configFile: 'karma.conf.js',
         singleRun: true
       }
+    },
+
+    //replacement
+    replace: {
+      local: {
+        options: {
+          patterns: [
+            {
+              json: {
+                api_url: "http://localhost:3000/api"
+              }
+            }
+          ]
+        },
+        files: [
+          {expand: true, flatten: true, src: ['.tmp/scripts/services/settings.js'], dest: '.tmp/scripts/services/'}
+        ]
+      },
+      product: {
+        options: {
+          patterns: [
+            {
+              json: {
+                api_url: "http://server.rsl.com/api"
+              }
+            }
+          ]
+        },
+        files: [
+          {
+            expand: true,
+            flatten: true,
+            src: ['.tmp/scripts/services/settings.js'],
+            dest: '.tmp/scripts/services/'
+          }
+        ]
+      }
     }
   });
 
@@ -402,6 +440,7 @@ module.exports = function (grunt) {
       'clean:server',
       'bower-install',
       'concurrent:server',
+      'replace:local',
       'autoprefixer',
       'connect:livereload',
       'watch'
@@ -426,6 +465,7 @@ module.exports = function (grunt) {
     'bower-install',
     'useminPrepare',
     'concurrent:dist',
+    'replace:product',
     'autoprefixer',
     'concat',
     'ngmin',

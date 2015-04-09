@@ -1,7 +1,7 @@
 'use strict'
-url = 'http://127.0.0.1:3000/api'
 
-angular.module('RSLWikiApp').factory "UserAPI", ($location, $resource) ->
+angular.module('RSLWikiApp').factory "UserAPI", ($location, $resource, Settings) ->
+  url = Settings.api_url
   $resource "#{url}/users",
       null
     ,
@@ -9,7 +9,8 @@ angular.module('RSLWikiApp').factory "UserAPI", ($location, $resource) ->
         method: 'POST'
         isArray: false
 
-angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource) ->
+angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource, Settings) ->
+  url = Settings.api_url
   $resource "#{url}/sessions",
       null
     ,
@@ -27,7 +28,8 @@ angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource) ->
         url: "#{url}/session"
         isArray: false
 
-angular.module('RSLWikiApp').factory "WikiAPI", ($location, $resource) ->
+angular.module('RSLWikiApp').factory "WikiAPI", ($location, $resource, Settings) ->
+  url = Settings.api_url
   $resource "#{url}/documents/:id",
       id: "@id"
     ,

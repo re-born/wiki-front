@@ -1,3 +1,2 @@
-angular.module('RSLWikiApp')
-  .constant 'Settings',
-    format_api_url: '@@api_url'
+angular.module('RSLWikiApp').constant 'Settings',
+  api_url: '@@api_url'
