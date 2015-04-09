@@ -5,6 +5,7 @@ angular.module('RSLWikiApp').controller 'LoginCtrl', ($scope, $state, SessionAPI
   $scope.login_params =
     login_id: ''
     password: ''
+  $scope.errors = []
 
   $scope.login = ()->
     SessionAPI.login $scope.login_params,
@@ -14,4 +15,4 @@ angular.module('RSLWikiApp').controller 'LoginCtrl', ($scope, $state, SessionAPI
         $state.go 'wiki_list'
       ,
       (error) ->
-        console.log 'error'
+        $scope.errors = ['IDとパスワードが一致しません']
