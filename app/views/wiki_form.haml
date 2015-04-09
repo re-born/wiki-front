@@ -1,11 +1,18 @@
-.title
-  %h2 Title
-  %input{'ng-model'=>'title'}
-.editor
-  %h2 Markdown
-  %textarea#editor-area{'ng-model'=>'markdown', 'ng-change'=>'markdown_change()'}
-.preview
-  %h2 Preview
-  #preview-area.markdown-body{'ng-bind-html'=>"pre"}
-%tags-input{'ng-model'=>'tags'}
-%button{'ng-click'=>'postDoc()'} POST
+%md-content{'style'=>'margin:20px; background-color: transparent;'}
+  .titlebar{'layout'=>'row', 'layout-align'=>"center center"}
+    %md-input-container{'flex'=>'true'}
+      %label Title
+      %input{'ng-model'=>'title'}
+    %md-button{'ng-click'=>'postDoc()'} POST
+
+  %tags-input{'ng-model'=>'tags'}
+
+  %md-grid-list{'md-cols'=>"2", 'md-gutter'=>"4px", 'md-row-height'=>"500px"}
+    %md-grid-tile
+      .editor
+        %textarea#editor-area{'ui-codemirror'=>'true', 'ui-codemirror-opts'=>'editorOptions', 'data-ng-model'=>'markdown.content', 'ng-change'=>'markdown_change(this)'}
+    %md-grid-tile
+      .preview
+        %md-content
+          #preview-area.markdown-body{'ng-bind-html'=>"pre"}
+

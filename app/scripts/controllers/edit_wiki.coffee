@@ -7,16 +7,17 @@ angular.module('RSLWikiApp').controller 'EditWikiCtrl', ($scope, $state, marked,
     wiki = result
     $scope.title = wiki.title
     $scope.user_name = wiki.user.name
-    $scope.markdown = wiki.content
+    $scope.markdown =
+      content: wiki.content
     $scope.pre = marked($scope.markdown)
     _.each wiki.tags, (tag)=>
       $scope.tags.push {"text":tag.name}
   $scope.markdown_change = () ->
-    $scope.pre = marked($scope.markdown)
+    $scope.pre = marked($scope.markdown.content)
   $scope.postDoc = () ->
     doc =
       user_id: storage.get('rsl.current_user').id
-      content: $scope.markdown
+      content: $scope.markdown.content
       title: $scope.title
       tags: _.pluck($scope.tags, 'text')
     WikiAPI.update {"id":wiki_id},doc, (result) ->

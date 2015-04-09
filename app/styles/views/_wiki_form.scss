@@ -1,0 +1,34 @@
+div.titlebar {
+  md-input {
+    input {
+      height: 40px;
+      font-size: 40px;
+    }
+  }
+}
+
+
+div.tags {
+  background-color: transparent;
+}
+
+.editor, .preview {
+  width: 100%;
+  height: 100%;  
+  padding: 4px;
+
+  .CodeMirror {
+    width: 100%;
+    height: 100%;
+  }
+
+  md-content {
+    height: 100%;
+    overflow: scroll;
+
+    #preview-area {
+      background-color: white;
+    }  
+  }
+
+}
