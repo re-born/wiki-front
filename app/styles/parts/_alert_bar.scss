@@ -1,0 +1,14 @@
+alert-bar {
+  position: fixed;
+  top: 48px;
+  z-index: 100;
+  width: 100%;
+  background: #EF5350;
+  ul {
+    li {
+      width: 100%;
+      color: #fff;
+      text-align: center;
+    }
+  }
+}
