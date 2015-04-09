@@ -5,5 +5,5 @@ angular.module('RSLWikiApp').directive 'alertBar', ()->
     messages: '='
     onChange: '&'
   link: (scope)->
-    scope.$watch 'messages', ()->
-      console.log 'change'
+    # scope.$watch 'messages', ()->
+    #   console.log scope.messages

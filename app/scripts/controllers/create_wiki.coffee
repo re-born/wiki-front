@@ -16,6 +16,12 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
   $scope.markdown_change = (el) ->
     $scope.pre = marked($scope.markdown.content)
   $scope.postDoc = () ->
+    $scope.errors = []
+    if !$scope.title
+      $scope.errors.push 'タイトルを入れてください'
+    if !$scope.markdown.content
+      $scope.errors.push '内容を入れてください'
+    return unless $scope.errors == []
     doc =
       user_id: storage.get('rsl.current_user').id
       content: $scope.markdown.content
@@ -24,4 +30,4 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
     WikiAPI.create doc, (result) ->
       $state.go 'wiki_list'
     , (e) ->
-      console.log e
+      $scope.errors.push 'サーバーエラー'

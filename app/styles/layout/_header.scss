@@ -10,6 +10,17 @@
     margin-left: 32px;
     line-height: $header_height;
     font-weight: 300;
+    display: block;
+    text-decoration: none;
+    &:hover {
+      color: $header_font_color;
+    }
+    &:visited {
+      color: $header_font_color;
+    }
+    &:link {
+      color: $header_font_color;
+    }
   }
   ul{
     float: right;

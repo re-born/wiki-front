@@ -9,12 +9,20 @@ angular.module('RSLWikiApp').controller 'EditWikiCtrl', ($scope, $state, marked,
     $scope.user_name = wiki.user.name
     $scope.markdown =
       content: wiki.content
-    $scope.pre = marked($scope.markdown)
+    $scope.pre = marked($scope.markdown.content)
     _.each wiki.tags, (tag)=>
       $scope.tags.push {"text":tag.name}
+
   $scope.markdown_change = () ->
     $scope.pre = marked($scope.markdown.content)
+
   $scope.postDoc = () ->
+    $scope.errors = []
+    if !$scope.title
+      $scope.errors.push 'タイトルを入れてください'
+    if !$scope.markdown.content
+      $scope.errors.push '内容を入れてください'
+    return unless $scope.errors == []
     doc =
       user_id: storage.get('rsl.current_user').id
       content: $scope.markdown.content
@@ -23,4 +31,4 @@ angular.module('RSLWikiApp').controller 'EditWikiCtrl', ($scope, $state, marked,
     WikiAPI.update {"id":wiki_id},doc, (result) ->
       $state.go 'wiki_list'
     , (e) ->
-      console.log e
+      $scope.errors.push "サーバーエラー"
