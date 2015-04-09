@@ -6,7 +6,7 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
   $scope.pre = ''
   $scope.title = ''
   $scope.tags = []
-  $scope.editorOptions = 
+  $scope.editorOptions =
     lineWrapping : true
     lineNumbers: true
     # matchBrackets: true
