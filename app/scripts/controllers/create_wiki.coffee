@@ -9,19 +9,18 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
   $scope.editorOptions =
     lineWrapping : true
     lineNumbers: true
-    # matchBrackets: true
-    # autofocus: true
     mode: 'markdown'
 
-  $scope.markdown_change = (el) ->
+  $scope.markdown_change = () ->
     $scope.pre = marked($scope.markdown.content)
+
   $scope.postDoc = () ->
     $scope.errors = []
     if !$scope.title
       $scope.errors.push 'タイトルを入れてください'
     if !$scope.markdown.content
       $scope.errors.push '内容を入れてください'
-    return unless $scope.errors == []
+    return if $scope.errors.length > 0
     doc =
       user_id: storage.get('rsl.current_user').id
       content: $scope.markdown.content

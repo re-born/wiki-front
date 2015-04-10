@@ -7,15 +7,14 @@ angular.module('RSLWikiApp').controller 'SignUpCtrl', ($scope, $state, UserAPI, 
     password: ''
     password_confirmation: ''
 
-  $scope.errors = []
-
   $scope.login = ()->
     $scope.errors = []
     if !$scope.sign_up_params.name or !$scope.sign_up_params.login_id or !$scope.sign_up_params.password
       $scope.errors.push '全ての項目が必須です'
     if $scope.sign_up_params.password != $scope.sign_up_params.password_confirmation
       $scope.errors.push 'パスワードが一致しません'
-    return unless $scope.errors == []
+    console.log $scope.errors
+    return if $scope.errors.length > 0
     UserAPI.create $scope.sign_up_params,
       (success) ->
         SessionAPI.login $scope.sign_up_params,

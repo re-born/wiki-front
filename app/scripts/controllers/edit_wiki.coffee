@@ -22,7 +22,7 @@ angular.module('RSLWikiApp').controller 'EditWikiCtrl', ($scope, $state, marked,
       $scope.errors.push 'タイトルを入れてください'
     if !$scope.markdown.content
       $scope.errors.push '内容を入れてください'
-    return unless $scope.errors == []
+    return if $scope.errors.length > 0
     doc =
       user_id: storage.get('rsl.current_user').id
       content: $scope.markdown.content
