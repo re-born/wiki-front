@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marked, WikiAPI, _, storage) ->
+angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marked, WikiAPI, _, storage, TagAPI) ->
   $scope.markdown =
     content: ''
   $scope.pre = ''
@@ -10,6 +10,9 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
     lineWrapping : true
     lineNumbers: true
     mode: 'markdown'
+
+  $scope.load_tags = ()->
+    return TagAPI.get_all().$promise
 
   $scope.markdown_change = () ->
     $scope.pre = marked($scope.markdown.content)

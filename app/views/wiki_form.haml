@@ -6,6 +6,7 @@
     %md-button{'ng-click'=>'postDoc()'} POST
 
   %tags-input{'ng-model'=>'tags'}
+    %auto-complete{"source"=>"load_tags()", "display-property"=>"name"}
 
   %md-grid-list{'md-cols'=>"2", 'md-gutter'=>"4px", 'md-row-height'=>"500px"}
     %md-grid-tile

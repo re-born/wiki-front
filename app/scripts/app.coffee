@@ -44,6 +44,13 @@ angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize',
       content:
         templateUrl: 'views/wiki.html'
         controller: 'WikiCtrl'
+  .state 'wiki_searched_by_tag',
+    url: 'tags/:tag_id/wiki'
+    views:
+      header: wiki_header.header
+      content:
+        templateUrl: 'views/wiki_list.html'
+        controller: 'WikiSearchedByTagCtrl'
   .state 'create_wiki',
     url: '/create_wiki'
     views:

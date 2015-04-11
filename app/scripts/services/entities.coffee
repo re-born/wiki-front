@@ -9,6 +9,21 @@ angular.module('RSLWikiApp').factory "UserAPI", ($location, $resource, Settings)
         method: 'POST'
         isArray: false
 
+angular.module('RSLWikiApp').factory "TagAPI", ($location, $resource, Settings) ->
+  url = Settings.api_url
+  $resource "#{url}/tags",
+      null
+    ,
+      get_all:
+        method: 'GET'
+        isArray: true
+      get_searched:
+        method: 'GET'
+        url: "#{url}/tags/:tag_id/documents"
+        params:
+          tag_id: '@tag_id'
+        isArray: true
+
 angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource, Settings) ->
   url = Settings.api_url
   $resource "#{url}/sessions",
@@ -25,7 +40,6 @@ angular.module('RSLWikiApp').factory "SessionAPI", ($location, $resource, Settin
         isArray: false
       logout:
         method: 'DELETE'
-        url: "#{url}/session"
         isArray: false
 
 angular.module('RSLWikiApp').factory "WikiAPI", ($location, $resource, Settings) ->

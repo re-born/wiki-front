@@ -2,5 +2,6 @@
   %li
     %a{"ui-sref"=>"wiki({wiki_id:wiki.id})"} {{wiki.title}}
     %span {{wiki.user.name}}
-    %span{"ng-repeat"=>"tag in wiki.tags"} {{tag.name}}
+    %span{"ng-repeat"=>"tag in wiki.tags"}
+      %a.tag{"ui-sref"=>"wiki_searched_by_tag({tag_id:tag.id})"} {{tag.name}}
     %span {{wiki.created_at}}
