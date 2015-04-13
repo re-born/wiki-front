@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked','ngTagsInput','underscore', 'angularLocalStorage', 'ui.codemirror', 'ngMaterial'])
+angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize','marked','ngTagsInput','underscore', 'angularLocalStorage', 'ui.codemirror', 'ngMaterial', 'moment'])
 .config ($stateProvider, $urlRouterProvider) ->
   $urlRouterProvider.otherwise '/login'
 
@@ -83,3 +83,4 @@ angular.module('RSLWikiApp').config ["$httpProvider", ($httpProvider) ->
 #module化したライブラリ
 angular.module('marked', []).factory 'marked', ()=> @.marked
 angular.module('underscore', []).factory '_', ()=> @._
+angular.module('moment', []).factory 'moment', ()=> @.moment
