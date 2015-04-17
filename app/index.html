@@ -2,80 +2,93 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
-    <link rel="stylesheet" href="bower_components/github-markdown-css/github-markdown.css" />
-    <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css" />
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-    <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/style.css">
-    <!-- endbuild -->
-  </head>
-  <body ng-app="RSLWikiApp">
-    <!--[if lt IE 7]>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/ng-tags-input/ng-tags-input.min.css" />
+  <link rel="stylesheet" href="bower_components/github-markdown-css/github-markdown.css" />
+  <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css" />
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css({.tmp,app}) styles/main.css -->
+  <link rel="stylesheet" href="styles/style.css">
+  <!-- endbuild -->
+</head>
+
+<body ng-app="RSLWikiApp">
+  <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div ui-view="header"></div>
-    <div ui-view="content"></div>
+  <!-- Add your site or application content here -->
+  <div ui-view="header"></div>
+  <div ui-view="content"></div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
+  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+  <script>
+  </script>
 
-    </script>
+  <!-- for MathJax -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ["\\(","\\)"]] } });
+  </script>
+  <!-- end MathJax -->
 
-    <!--[if lt IE 9]>
+  <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/marked/lib/marked.js"></script>
-    <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
-    <script src="bower_components/underscore/underscore.js"></script>
-    <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js"></script>
-    <script src="bower_components/codemirror/lib/codemirror.js"></script>
-    <script src="bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
-    <script src="bower_components/angular-material/angular-material.js"></script>
-    <script src="bower_components/sweetalert/lib/sweet-alert.min.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+  <!-- build:js scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/marked/lib/marked.js"></script>
+  <script src="bower_components/ng-tags-input/ng-tags-input.min.js"></script>
+  <script src="bower_components/underscore/underscore.js"></script>
+  <script src="bower_components/angularLocalStorage/src/angularLocalStorage.js"></script>
+  <script src="bower_components/codemirror/lib/codemirror.js"></script>
+  <script src="bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <script src="bower_components/mermaid/dist/mermaid.slim.js"></script>
+  <script src="bower_components/marked-mathjax/lib/marked.js"></script>
+  <script src="bower_components/angular-marked-mathjax/angular-marked.js"></script>
+  <script src='bower_components/MathJax/MathJax.js?config=TeX-AMS_HTML'></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/create_wiki.js"></script>
-        <script src="scripts/controllers/login.js"></script>
-        <script src="scripts/services/entities.js"></script>
-        <script src="scripts/services/settings.js"></script>
-        <script src="scripts/controllers/wiki_list.js"></script>
-        <script src="scripts/controllers/wiki.js"></script>
-        <script src="scripts/controllers/edit_wiki.js"></script>
-        <script src="scripts/controllers/header.js"></script>
-        <script src="scripts/controllers/sign_up.js"></script>
-        <script src="scripts/directives/alert.js"></script>
-        <script src="scripts/controllers/wiki_searched_by_tag.js"></script>
-        <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/create_wiki.js"></script>
+  <script src="scripts/controllers/login.js"></script>
+  <script src="scripts/services/entities.js"></script>
+  <script src="scripts/services/settings.js"></script>
+  <script src="scripts/controllers/wiki_list.js"></script>
+  <script src="scripts/controllers/wiki.js"></script>
+  <script src="scripts/controllers/edit_wiki.js"></script>
+  <script src="scripts/controllers/header.js"></script>
+  <script src="scripts/controllers/sign_up.js"></script>
+  <script src="scripts/directives/alert.js"></script>
+  <script src="scripts/controllers/wiki_searched_by_tag.js"></script>
+  <!-- endbuild -->
 </body>
+
 </html>
