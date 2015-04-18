@@ -1,7 +1,8 @@
-.wiki-list{"ng-repeat"=>"wiki in wikis"}
-  %li
-    %a{"ui-sref"=>"wiki({wiki_id:wiki.id})"} {{wiki.title}}
-    %span {{wiki.user.name}}
-    %span{"ng-repeat"=>"tag in wiki.tags"}
-      %a.tag{"ui-sref"=>"wiki_searched_by_tag({tag_id:tag.id})"} {{tag.name}}
-    %span {{wiki.created_at}}
+%md-grid-list{'md-cols'=>'4', 'md-row-height'=>'3:4', 'md-gutter'=>'6px'}
+  %a{"ui-sref"=>"wiki({wiki_id:wiki.id})", 'ng-repeat'=>'wiki in wikis'}
+    %md-grid-tile.wiki_list
+      %h2 {{wiki.title}}
+      %md-grid-tile-header{'layout-align'=>'center'}
+        %h3 {{wiki.user.name}} made {{wiki.created_at}}
+      %md-grid-tile-footer
+        %span{"ng-repeat"=>"tag in wiki.tags"} {{tag.name}}
