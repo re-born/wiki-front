@@ -14,7 +14,7 @@ div.tags {
 
 .editor, .preview {
   width: 100%;
-  height: 100%;  
+  height: 100%;
   padding: 4px;
 
   .CodeMirror {
@@ -25,10 +25,11 @@ div.tags {
   md-content {
     height: 100%;
     overflow: scroll;
+    padding: 9px;
 
     #preview-area {
       background-color: white;
-    }  
+    }
   }
 
 }

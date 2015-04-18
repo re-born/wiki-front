@@ -11,11 +11,13 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
     lineNumbers: true
     mode: 'markdown'
 
-  $scope.load_tags = ()->
+  $scope.load_tags = () ->
     return TagAPI.get_all().$promise
 
   $scope.markdown_change = () ->
     $scope.pre = marked($scope.markdown.content)
+    previewElement = document.getElementById("preview-area")
+    MathJax.Hub.Typeset(previewElement)
 
   $scope.postDoc = () ->
     $scope.errors = []

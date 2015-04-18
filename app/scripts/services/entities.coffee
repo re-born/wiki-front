@@ -12,7 +12,7 @@ angular.module('RSLWikiApp').factory "UserAPI", ($location, $resource, Settings)
 angular.module('RSLWikiApp').factory "TagAPI", ($location, $resource, Settings) ->
   url = Settings.api_url
   $resource "#{url}/tags",
-      null
+      id: '@id'
     ,
       get_all:
         method: 'GET'
