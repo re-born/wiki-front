@@ -30,6 +30,7 @@
     <!-- Add your site or application content here -->
     <div ui-view="header"></div>
     <div ui-view="content"></div>
+    <div ng-include="'views/loading.html'" ng-controller="loadingCtrl"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -83,6 +84,7 @@
         <script src="scripts/controllers/sign_up.js"></script>
         <script src="scripts/directives/alert.js"></script>
         <script src="scripts/controllers/wiki_searched_by_tag.js"></script>
+        <script src="scripts/controllers/loading.js"></script>
         <!-- endbuild -->
 </body>
 </html>
