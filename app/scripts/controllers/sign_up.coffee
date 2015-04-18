@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'SignUpCtrl', ($scope, $state, UserAPI, SessionAPI, storage) ->
+angular.module('RSLWikiApp').controller 'SignUpCtrl', ($scope, $state, UserAPI, SessionAPI, storage, RSLLoading) ->
   $scope.sign_up_params =
     name: ''
     login_id: ''
@@ -13,18 +13,21 @@ angular.module('RSLWikiApp').controller 'SignUpCtrl', ($scope, $state, UserAPI, 
       $scope.errors.push '全ての項目が必須です'
     if $scope.sign_up_params.password != $scope.sign_up_params.password_confirmation
       $scope.errors.push 'パスワードが一致しません'
-    console.log $scope.errors
     return if $scope.errors.length > 0
+    RSLLoading.loading_start()
     UserAPI.create $scope.sign_up_params,
       (success) ->
         SessionAPI.login $scope.sign_up_params,
           (success) ->
+            RSLLoading.loading_finish()
             storage.set('rsl.access_token',success.access_token)
             storage.set('rsl.current_user',success.user)
             $state.go 'wiki_list'
           ,
           (error) ->
+            RSLLoading.loading_finish()
             $scope.errors.push 'サーバーエラー'
       ,
       (error) ->
+        RSLLoading.loading_finish()
         $scope.errors.push 'サーバーエラー'

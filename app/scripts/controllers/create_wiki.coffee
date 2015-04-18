@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marked, WikiAPI, _, storage, TagAPI) ->
+angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marked, WikiAPI, _, storage, TagAPI, RSLLoading) ->
   $scope.markdown =
     content: ''
   $scope.pre = ''
@@ -26,12 +26,15 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
     if !$scope.markdown.content
       $scope.errors.push '内容を入れてください'
     return if $scope.errors.length > 0
+    RSLLoading.loading_start()
     doc =
       user_id: storage.get('rsl.current_user').id
       content: $scope.markdown.content
       title: $scope.title
       tags: _.pluck($scope.tags, 'text')
     WikiAPI.create doc, (result) ->
+      RSLLoading.loading_finish()
       $state.go 'wiki_list'
     , (e) ->
+      RSLLoading.loading_finish()
       $scope.errors.push 'サーバーエラー'

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'EditWikiCtrl', ($scope, $state, marked, WikiAPI, _, storage) ->
+angular.module('RSLWikiApp').controller 'EditWikiCtrl', ($scope, $state, marked, WikiAPI, _, storage, RSLLoading) ->
   wiki_id = $state.params.wiki_id
   $scope.tags = []
   WikiAPI.get {"id":wiki_id},(result)=>
@@ -28,7 +28,10 @@ angular.module('RSLWikiApp').controller 'EditWikiCtrl', ($scope, $state, marked,
       content: $scope.markdown.content
       title: $scope.title
       tags: _.pluck($scope.tags, 'text')
+    RSLLoading.loading_start()
     WikiAPI.update {"id":wiki_id},doc, (result) ->
+      RSLLoading.loading_finish()
       $state.go 'wiki_list'
     , (e) ->
+      RSLLoading.loading_finish()
       $scope.errors.push "サーバーエラー"

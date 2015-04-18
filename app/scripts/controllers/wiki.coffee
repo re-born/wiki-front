@@ -1,11 +1,13 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'WikiCtrl', ($scope, $state, marked, WikiAPI, storage) ->
+angular.module('RSLWikiApp').controller 'WikiCtrl', ($scope, $state, marked, WikiAPI, storage, RSLLoading) ->
   current_user = storage.get('rsl.current_user')
   $scope.wiki_id = $state.params.wiki_id
   $scope.is_edit = false
+  RSLLoading.loading_start()
 
   WikiAPI.get {"id":$scope.wiki_id},(result)=>
+    RSLLoading.loading_finish()
     wiki = result
     if current_user.id == wiki.user_id
       $scope.is_edit = true
@@ -26,8 +28,11 @@ angular.module('RSLWikiApp').controller 'WikiCtrl', ($scope, $state, marked, Wik
       wiki_delete()
 
   wiki_delete = ()->
+    RSLLoading.loading_start()
     WikiAPI.delete {"id":$scope.wiki_id}, (result)->
+      RSLLoading.loading_finish()
       swal("削除しました", "", "success")
       $state.go 'wiki_list'
     ,(error)->
+      RSLLoading.loading_finish()
       swal("失敗しました", "", "error")
