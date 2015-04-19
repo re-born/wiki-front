@@ -5,7 +5,7 @@
       %input{'ng-model'=>'title'}
     %md-button{'ng-click'=>'postDoc()'} POST
 
-  %tags-input{'ng-model'=>'tags' , "display-property"=>"name"}
+  %tags-input{'ng-model'=>'tags', 'key-property'=>'name', "display-property"=>"name"}
     %auto-complete{"source"=>"load_tags()"}
 
   %md-grid-list{'md-cols'=>"2", 'md-gutter'=>"4px", 'md-row-height'=>"500px"}

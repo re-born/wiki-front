@@ -31,7 +31,7 @@ angular.module('RSLWikiApp').controller 'CreateWikiCtrl', ($scope, $state, marke
       user_id: storage.get('rsl.current_user').id
       content: $scope.markdown.content
       title: $scope.title
-      tags: _.pluck($scope.tags, 'text')
+      tags: _.pluck($scope.tags, 'name')
     WikiAPI.create doc, (result) ->
       RSLLoading.loading_finish()
       $state.go 'wiki_list'
