@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'LoginCtrl', ($scope, $state, SessionAPI, storage) ->
+angular.module('RSLWikiApp').controller 'LoginCtrl', ($scope, $state, SessionAPI, storage, RSLLoading) ->
   return $state.go 'wiki_list' if storage.get('rsl.current_user')
   $scope.login_params =
     login_id: ''
@@ -8,14 +8,14 @@ angular.module('RSLWikiApp').controller 'LoginCtrl', ($scope, $state, SessionAPI
   $scope.errors = []
 
   $scope.login = ()->
-    Loading.loading_start()
+    RSLLoading.loading_start()
     SessionAPI.login $scope.login_params,
       (success) ->
-        Loading.loading_finish()
+        RSLLoading.loading_finish()
         storage.set('rsl.access_token',success.access_token)
         storage.set('rsl.current_user',success.user)
         $state.go 'wiki_list'
       ,
       (error) ->
-        Loading.loading_finish()
+        RSLLoading.loading_finish()
         $scope.errors = ['IDとパスワードが一致しません']
