@@ -14,7 +14,24 @@ angular.module('RSLWikiApp').controller 'WikiCtrl', ($scope, $state, marked, Wik
     $scope.title = wiki.title
     $scope.tags = wiki.tags
     $scope.user_name = wiki.user.name
-    $scope.content = marked(wiki.content)
+    $scope.headings = []
+
+    renderer = new marked.Renderer()
+    renderer.heading = (text, level) ->
+      escapedText = text.toLowerCase().replace(/[^\w]+/g, '-')
+      $scope.headings.push
+        text: text
+        class: 'heading_' + level
+        href: '#/wiki/' + $scope.wiki_id + '#' + escapedText
+      return '<h' + level + ' id="' + escapedText + '">' + text + '</h' + level + '>'
+
+    document.getElementById("preview-area").childNodes[1].innerHTML = marked wiki.content, { renderer: renderer }
+    # $scope.content = marked wiki.content, { renderer: renderer }
+
+    $scope.$watch 'content', (newval, oldval) ->
+      previewElement = document.getElementById("preview-area")
+      MathJax.Hub.Typeset previewElement
+    , true
 
   $scope.show_comfirmation = ()->
     swal {

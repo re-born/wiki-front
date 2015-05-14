@@ -1,9 +1,19 @@
 
-.title {{title}}
-.auther {{user_name}}
-.tags{"ng-repeat"=>"tag in tags"}
-  .tag{"ui-sref"=>"wiki_searched_by_tag({tag_id:tag.id})"} {{tag.name}}
-.edit-link{"ng-if"=>"is_edit", "ui-sref"=>"edit_wiki({wiki_id: wiki_id})"} 編集
-.delete-button{"ng-if"=>"is_edit", "ng-click"=>"show_comfirmation()"} 削除
-.markdown-body
-  .content{'ng-bind-html'=>"content"}
+%md-toolbar{'class'=>"md-tall md-accent",'layout'=>"column", 'layout-align'=>"center center"}
+  %h3.title {{title}}
+  .info{'layout'=>"row", 'layout-align'=>"space-between center"}
+    .author {{user_name}}
+    .tags_container{'layout'=>"row"}
+      .tags{"ng-repeat"=>"tag in tags"}
+        .tag{"ui-sref"=>"wiki_searched_by_tag({tag_id:tag.id})"} {{tag.name}}
+    .edit_and_delete{'layout'=>"row"}
+      .edit-link{"ng-if"=>"is_edit", "ui-sref"=>"edit_wiki({wiki_id: wiki_id})"} 編集
+      .delete-button{"ng-if"=>"is_edit", "ng-click"=>"show_comfirmation()"} 削除
+.show
+  %md-content
+    #preview-area.markdown-body
+      .content{'ng-bind-html'=>"content"}
+
+.overview{'set-class-when-at-top'=>"fix-to-top"}
+  .headings{'ng-repeat'=>'heading in headings'}
+    %a{'class'=>'{{heading.class}}', 'href'=>'{{heading.href}}'} {{heading.text}}
