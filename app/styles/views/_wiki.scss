@@ -1,0 +1,59 @@
+
+.overview {
+  position: absolute;
+  top: 173px;
+  right: 0;
+  background-color: rgba(100,100,100,0.2);
+  width: 289px;
+  padding: 17px;
+
+  .headings {
+    margin: 8px;
+    padding: 3px 10px;
+  }
+}
+
+md-toolbar {
+  .info {
+    width: 100%;
+
+    .author {
+      margin-left: 30px;
+    }
+
+    .tag {
+      margin: 5px;
+      padding: 3px 10px;
+    }
+
+    .edit_and_delete {
+      margin-right: 30px;
+
+      .edit-link {
+        margin: 5px;
+      }
+      .delete-button {
+        margin: 5px;
+      }
+    }
+  }
+}
+
+.show {
+  width: 55%;
+  margin: 0 auto;
+
+  md-content {
+    width: 100%;
+    padding: 4px;
+
+    #preview-area {
+      padding: 55px 15px;
+
+      .content {
+        padding: 9px;
+
+      }
+    }
+  }
+}
