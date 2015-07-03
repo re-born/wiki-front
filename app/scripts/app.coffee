@@ -68,7 +68,7 @@ angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize',
 
 angular.module('RSLWikiApp').config ["$httpProvider", ($httpProvider) ->
   $httpProvider.defaults.headers.common['Accept'] = "application/json"
-  $httpProvider.interceptors.push ($q, storage, $location) ->
+  $httpProvider.interceptors.push(['storage','$q','$location', (storage, $q, $location) ->
     request: (config)->
       config.headers['Rsl-Http-Access-Token'] = storage.get('rsl.access_token')
       config
@@ -77,6 +77,7 @@ angular.module('RSLWikiApp').config ["$httpProvider", ($httpProvider) ->
         $location.path '/login'
         storage.clearAll()
       $q.reject(rejection)
+  ])
 ]
 
 
