@@ -9,3 +9,5 @@ angular.module('RSLWikiApp').controller 'WikiListCtrl', ($scope, WikiAPI, moment
       wiki.created_at = moment(wiki.created_at).fromNow()
   ,(e)->
     RSLLoading.loading_finish()
+
+  $scope.edit_search_tag = () =>
