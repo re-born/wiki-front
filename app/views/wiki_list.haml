@@ -1,7 +1,10 @@
 .search-area{'layout'=>"row"}
   %md-input-container{'flex'=>''}
     %label TagName
-    %input{'ng-model'=>"searchParam.tag",'ng-cahnge'=>'edit_search_tag()'}
+    %input{'ng-model'=>"input.tag",'ng-change'=>'edit_search_tag()'}
+    .search-tags
+      %li{'ng-repeat'=>'tag in display_tags'}
+        {{tag.name}}
   %md-button.md-raised{'aria-label'=>"Favorite"}
     %i.fa.fa-search
     %span search
