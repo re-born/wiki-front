@@ -2,11 +2,12 @@
 
 angular.module('RSLWikiApp').controller 'WikiListCtrl', ($scope, WikiAPI, TagAPI, moment, RSLLoading, $q) ->
   tags = []
-  $scope.display_tags = []
+  $scope.candidate_tags = []
+  $scope.selected_tags
   RSLLoading.loading_start()
 
   $scope.input = {
-    tag:''
+    name:''
   }
 
   all = $q.all([
@@ -27,9 +28,13 @@ angular.module('RSLWikiApp').controller 'WikiListCtrl', ($scope, WikiAPI, TagAPI
 
   $scope.edit_search_tag = () =>
     $scope.display_wiki = []
-    if $scope.input.tag != ''
+    if $scope.input.name != ''
       for tag in tags
-        if tag.name.indexOf($scope.input.tag) != -1
-          $scope.display_tags.push tag
+        if tag.name.indexOf($scope.input.name) != -1
+          $scope.candidate_tags.push tag
 
-  $scope.tag_search 
+  $scope.tag_search = ()=>
+
+  $scope.set_tag = (tag)=>
+    console.log 'aaa'
+    $scope.input = tag
