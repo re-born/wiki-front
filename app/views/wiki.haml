@@ -4,6 +4,7 @@
   .info{'layout'=>"row", 'layout-align'=>"space-between center"}
     .author {{user_name}}
     .tags_container{'layout'=>"row"}
+      %span タグ:
       .tags{"ng-repeat"=>"tag in tags"}
         .tag{"ui-sref"=>"wiki_searched_by_tag({tag_id:tag.id})"} {{tag.name}}
     .edit_and_delete{'layout'=>"row"}
