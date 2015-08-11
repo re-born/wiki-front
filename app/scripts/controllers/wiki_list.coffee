@@ -20,14 +20,16 @@ angular.module('RSLWikiApp').controller 'WikiListCtrl', ($scope, WikiAPI, TagAPI
     for wiki in $scope.wikis
       wiki.created_at = moment(wiki.created_at).fromNow()
     tags = success[1]
-    console.log tags
+    console.log success[0]
   , (error)=>
     RSLLoading.loading_finish()
   )
 
   $scope.edit_search_tag = () =>
-    $scope.display_tags = []
+    $scope.display_wiki = []
     if $scope.input.tag != ''
       for tag in tags
         if tag.name.indexOf($scope.input.tag) != -1
           $scope.display_tags.push tag
+
+  $scope.tag_search 

@@ -31,7 +31,7 @@ angular.module('RSLWikiApp', ['ui.router','ngCookies','ngResource','ngSanitize',
         templateUrl: 'views/main.html'
         controller: 'MainCtrl'
   .state 'wiki_list',
-    url: '/wiki_list'
+    url: '/wiki_list/:tag_name'
     views:
       header: wiki_header.header
       content:
