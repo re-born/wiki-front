@@ -2,6 +2,15 @@
   height: 32px;
   position: relative;
   margin: 20px;
+  .selected-tags {
+    li {
+      border-radius: 3px;
+      background:#fff;
+      line-height: 32px;
+      padding:0 4px;
+      margin: 0 4px;
+    }
+  }
   md-input-container {
     padding: 0;
     input,label {
@@ -13,6 +22,7 @@
     position: absolute;
     left: 0;
     top: 32px;
+    width: 100%;
     z-index: 10000;
     li {
       cursor: pointer;

@@ -1,9 +1,11 @@
 'use strict'
 
 angular.module('RSLWikiApp').controller 'WikiListCtrl', ($scope, WikiAPI, TagAPI, moment, RSLLoading, $q) ->
-  tags = []
   $scope.candidate_tags = []
   $scope.selected_tags = []
+  search_tag_ids = []
+  tags = []
+  wikis = []
   RSLLoading.loading_start()
 
   $scope.input = {
@@ -17,9 +19,10 @@ angular.module('RSLWikiApp').controller 'WikiListCtrl', ($scope, WikiAPI, TagAPI
 
   all.then((success)=>
     RSLLoading.loading_finish()
-    $scope.wikis = success[0]
-    for wiki in $scope.wikis
+    wikis = success[0]
+    for wiki in wikis
       wiki.created_at = moment(wiki.created_at).fromNow()
+    $scope.display_wikis = wikis
     tags = success[1]
   , (error)=>
     RSLLoading.loading_finish()
@@ -38,3 +41,7 @@ angular.module('RSLWikiApp').controller 'WikiListCtrl', ($scope, WikiAPI, TagAPI
     $scope.selected_tags.push(tag)
     $scope.candidate_tags = []
     $scope.input = {name: ''}
+
+  $scope.delete_tag = (index) =>
+    console.log index
+    $scope.selected_tags.splice(index,1)
