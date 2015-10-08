@@ -420,7 +420,7 @@ module.exports = function (grunt) {
           patterns: [
             {
               json: {
-                api_url: "http://api.l-u-l.tk/api"
+                api_url: "http://rsl-api.l-u-l.tk/api"
               }
             }
           ]
