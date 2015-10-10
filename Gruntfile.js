@@ -447,7 +447,7 @@ module.exports = function (grunt) {
       'clean:server',
       'bower-install',
       'concurrent:server',
-      'replace:local',
+      'replace:product',
       'autoprefixer',
       'connect:livereload',
       'watch'
