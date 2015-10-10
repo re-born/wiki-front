@@ -3,7 +3,7 @@
   %input{"ng-model"=>"login_params.login_id","placeholder"=>"Login ID"}
   %input{"ng-model"=>"login_params.password","placeholder"=>"Password", "type"=>"password"}
   .button{"ng-click"=>"login()"}
-    .font login
+    %a.font login
 
   .clear-both
 %alert-bar{"messages"=>"errors"}

@@ -8,6 +8,7 @@ angular.module('RSLWikiApp').controller 'LoginCtrl', ($scope, $state, SessionAPI
   $scope.errors = []
 
   $scope.login = ()->
+    console.log 'aaaaa'
     RSLLoading.loading_start()
     SessionAPI.login $scope.login_params,
       (success) ->
