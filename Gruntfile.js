@@ -420,7 +420,7 @@ module.exports = function (grunt) {
           patterns: [
             {
               json: {
-                api_url: "http://rsl-api.l-u-l.tk/api"
+                api_url: "https://rsl-api.l-u-l.tk/api"
               }
             }
           ]
@@ -447,7 +447,7 @@ module.exports = function (grunt) {
       'clean:server',
       'bower-install',
       'concurrent:server',
-      'replace:product',
+      'replace:local',
       'autoprefixer',
       'connect:livereload',
       'watch'
