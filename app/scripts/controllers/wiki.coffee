@@ -25,8 +25,8 @@ angular.module('RSLWikiApp').controller 'WikiCtrl', ($scope, $state, marked, Wik
         href: '#/wiki/' + $scope.wiki_id + '#' + escapedText
       return '<h' + level + ' id="' + escapedText + '">' + text + '</h' + level + '>'
 
-    document.getElementById("preview-area").childNodes[1].innerHTML = marked wiki.content, { renderer: renderer }
-    # $scope.content = marked wiki.content, { renderer: renderer }
+    # document.getElementById("preview-area").childNodes[1].innerHTML = marked wiki.content, { renderer: renderer }
+    $scope.content = marked wiki.content, { renderer: renderer }
 
     $scope.$watch 'content', (newval, oldval) ->
       previewElement = document.getElementById("preview-area")

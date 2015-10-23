@@ -13,7 +13,7 @@
 .show
   %md-content
     #preview-area.markdown-body
-      .content{'ng-bind-html'=>"content"}
+      .content{'ng-bind-html'=>"content"} {{content}}
 
 .overview{'set-class-when-at-top'=>"fix-to-top"}
   .headings{'ng-repeat'=>'heading in headings'}
