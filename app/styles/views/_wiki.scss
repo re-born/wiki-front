@@ -36,13 +36,11 @@ md-toolbar {
       }
     }
 
-    .edit_and_delete {
+    .edit-and-delete {
       margin-right: 30px;
 
-      .edit-link {
-        margin: 5px;
-      }
-      .delete-button {
+      .btn {
+        cursor: pointer;
         margin: 5px;
       }
     }
@@ -62,7 +60,9 @@ md-toolbar {
 
       .content {
         padding: 9px;
-
+        li {
+          list-style: disc;
+        }
       }
     }
   }

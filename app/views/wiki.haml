@@ -7,9 +7,9 @@
       %span タグ:
       .tags{"ng-repeat"=>"tag in tags"}
         .tag{"ui-sref"=>"wiki_searched_by_tag({tag_id:tag.id})"} {{tag.name}}
-    .edit_and_delete{'layout'=>"row"}
-      .edit-link{"ng-if"=>"is_edit", "ui-sref"=>"edit_wiki({wiki_id: wiki_id})"} 編集
-      .delete-button{"ng-if"=>"is_edit", "ng-click"=>"show_comfirmation()"} 削除
+    .edit-and-delete{'layout'=>"row"}
+      .edit-link.btn{"ng-if"=>"is_edit", "ui-sref"=>"edit_wiki({wiki_id: wiki_id})"} 編集
+      .delete-button.btn{"ng-if"=>"is_edit", "ng-click"=>"show_comfirmation()"} 削除
 .show
   %md-content
     #preview-area.markdown-body
