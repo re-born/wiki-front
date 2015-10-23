@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('RSLWikiApp').controller 'WikiCtrl', ($scope, $state, marked, WikiAPI, storage, RSLLoading) ->
+angular.module('RSLWikiApp').controller 'WikiCtrl', ($scope, $state, marked, WikiAPI, storage, RSLLoading, SweetAlert) ->
   current_user = storage.get('rsl.current_user')
   $scope.wiki_id = $state.params.wiki_id
   $scope.is_edit = false
